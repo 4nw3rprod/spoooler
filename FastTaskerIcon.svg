@@ -1,0 +1,16 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with Bento-style rounding -->
+  <rect width="1024" height="1024" rx="224" fill="#1C1C1E"/>
+  
+  <!-- Bento Box Layout Grid Elements -->
+  <rect x="128" y="128" width="368" height="368" rx="40" fill="#2C2C2E"/>
+  <rect x="528" y="128" width="368" height="224" rx="40" fill="#2C2C2E"/>
+  <rect x="128" y="528" width="768" height="368" rx="40" fill="#2C2C2E"/>
+  <rect x="528" y="384" width="368" height="112" rx="40" fill="#A8EDCA" fill-opacity="0.2"/>
+  
+  <!-- Central Mint Icon (Checkmark Abstract) -->
+  <path d="M400 750L500 850L750 600" stroke="#A8EDCA" stroke-width="80" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Abstract "Progress" bar element -->
+  <rect x="568" y="420" width="288" height="40" rx="20" fill="#A8EDCA"/>
+</svg>

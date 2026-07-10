@@ -1,0 +1,14 @@
+{
+  "name": "instagram-reel-tool-mcp",
+  "description": "Instagram Reel Tool — MCP is the sole entry point. The video-director playbook lives in VIDEO-DIRECTOR-SKILL.md; the tool catalog in FOOTAGE-MCP-SKILL.md and mcp/README.md.",
+  "version": "2.0.0",
+  "entry": "mcp",
+  "mcp": {
+    "command": "node",
+    "args": ["mcp/server.mjs"],
+    "transport": "stdio",
+    "manualClient": "node mcp/client.mjs <tool> '<json-args>'"
+  },
+  "skill": "VIDEO-DIRECTOR-SKILL.md",
+  "notes": "Direct CLI (instagram-reel-generator.mjs), the npm dev/build/start scripts, and the web app have been removed/gated. The engine refuses to run unless spawned by the MCP server (REEL_VIA_MCP). All invocations go through the MCP tools."
+}

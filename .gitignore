@@ -1,0 +1,48 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+.mcp.json
+
+# Generator runtime artifacts
+runs/
+ui-dist/
+node_modules/
+.vercel
+
+# Build output / caches
+.next/
+tsconfig.tsbuildinfo
+.serena/
+.venv-*/
+
+# Desktop app wrapper (separate branded product, not part of this OSS repo)
+dist-electron/
+electron/
+
+# Local scratch / debug output — not part of the tool
+.cache/
+.DS_Store
+*.mp4
+*_args.json
+dev_server.log
+generator_output.log
+docs/superpowers/
+server_render.html
+spoooler-landing.html
+test-strategy-parse.mjs
+scripts/verify-landing.mjs
+scripts/run-skillmd-3media.mjs
+scripts/run-skills-3media.mjs
+automation/
+automations/
+
+# Local AI-tool/editor state — not part of the tool
+.claude/
+.mavis/
+.kiro/
+.windsurf/
+.opencode/
+.pi/
+.agents/
+.vscode/
