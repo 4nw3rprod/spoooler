@@ -24,7 +24,12 @@ electron/
 .cache/
 .DS_Store
 *.mp4
-*_args.json
+*.mov
+*.MOV
+*_args*.json
+tmp/
+__pycache__/
+*.pyc
 dev_server.log
 generator_output.log
 docs/superpowers/
