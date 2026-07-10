@@ -307,6 +307,21 @@ Check `PEXELS_API_KEY`/`UNSPLASH_ACCESS_KEY` are set and stock/scraped media act
 
 - **[ReelRecon](https://github.com/4nw3rprod/ReelRecon)** — Instagram/video transcription over MCP or web UI. See [Optional: Instagram URL / video transcription](#optional-instagram-url--video-transcription--pairs-with-reelrecon) above for how the two fit together.
 
+## Roadmap: a closed-loop, autonomous content pipeline
+
+Spoooler and [ReelRecon](https://github.com/4nw3rprod/ReelRecon) already cover *transcribe → script → produce* end to end over MCP. The next integration closes the loop from raw footage to a published post, with no manual handoff in between:
+
+| Stage | Tool | Role |
+|---|---|---|
+| **Discover / transcribe** | [ReelRecon](https://github.com/4nw3rprod/ReelRecon) | Pull and transcribe source content (Instagram, video, audio) |
+| **Route the LLM calls** | [OmniRoute](https://github.com/diegosouzapw/OmniRoute) | Single gateway across providers — smart fallback and cost-aware routing for every scripting/vision call in the pipeline |
+| **Script, produce, render** | **Spoooler** (this repo) | Hook, scenes, voiceover, captions, brand media, final MP4 — driven tool-by-tool over MCP |
+| **Publish** | [Postiz](https://github.com/gitroomhq/postiz-app) | Schedule and post the finished reel across platforms, agent-driven via its tool-call CLI |
+
+The goal: point the pipeline at a source once, and let it run end to end — discovery through publishing — as a single MCP-orchestrated workflow. No manual export/upload step, no juggling separate scheduling tools, no re-planning content by hand. Set it up once, then stop thinking about *posting* and go back to thinking about *what's worth making*.
+
+This is planned, not yet wired up — tracking here so the shape of the integration is public before the code is.
+
 ## Built with
 
 Spoooler is a thin orchestration layer over a handful of open-source projects doing the real work:
