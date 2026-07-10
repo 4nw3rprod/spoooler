@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "instagram-reel-tool": {
+      "command": "node",
+      "args": ["/ABSOLUTE/PATH/TO/instagram-reel-tool/mcp/server.mjs"]
+    }
+  }
+}

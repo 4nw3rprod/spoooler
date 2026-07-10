@@ -1,0 +1,50 @@
+# Local next build output and dependencies
+.next
+node_modules
+.vercel
+tmp
+temp
+
+# Agent caches and configuration files
+.cache
+.claude
+.kiro
+.mavis
+.opencode
+.pi
+.serena
+.vscode
+.windsurf
+.agents
+.git
+
+# Electron build and source files
+electron
+dist-electron
+
+# Rendered video outputs and run directories
+runs
+footage
+*.mp4
+*.log
+*.html
+
+# Command arguments and temporary JSON configurations
+*args*.json
+pattern_args.json
+rank_args.json
+render_args.json
+scrape_args.json
+state_args.json
+stock_args.json
+strategy_args.json
+voice_args.json
+
+# Test files and local automation tools
+tests
+scripts
+automation
+automations
+refactor*.mjs
+test*.ts
+test*.mjs

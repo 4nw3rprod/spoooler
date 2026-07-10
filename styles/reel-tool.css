@@ -1,0 +1,91 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Reel Tool — UI palette overlay
+   ───────────────────────────────────────────────────────────────────────── */
+/* Force the editorial dark theme that matches the Huashu reel aesthetic. */
+html { color-scheme: dark; }
+html, body { background: var(--color-bg-primary); }
+
+/* Shadcn-style tokens used by app/page.tsx (bg-muted, text-foreground,
+   border-border, etc.) aren't defined by UntitledUI's theme — they were
+   silently falling back to Tailwind defaults, which is why the UI looked
+   inconsistent. Map them onto UntitledUI's resolved tokens so the two systems
+   stay in sync. These also auto-track .dark-mode because UntitledUI redefines
+   --color-bg-* etc. inside the dark-mode block. */
+@theme inline {
+  --color-background: var(--color-bg-primary);
+  --color-foreground: var(--color-text-primary);
+  --color-card: var(--color-bg-secondary);
+  --color-card-foreground: var(--color-text-primary);
+  --color-popover: var(--color-bg-secondary);
+  --color-popover-foreground: var(--color-text-primary);
+  --color-muted: var(--color-bg-secondary);
+  --color-muted-foreground: var(--color-text-tertiary);
+  --color-accent: var(--color-bg-secondary_hover);
+  --color-accent-foreground: var(--color-text-primary);
+  --color-border: var(--color-border-secondary);
+  --color-input: var(--color-border-secondary);
+  --color-ring: var(--color-border-brand);
+  --color-primary-foreground: var(--color-text-primary_on-brand);
+  --color-secondary-foreground: var(--color-text-primary);
+  --color-destructive: var(--color-bg-error-solid);
+  --color-destructive-foreground: var(--color-white);
+}
+
+/* Editorial brand accent — Huashu rust/orange. Tinted ramp from 50→950 so the
+   UntitledUI primary button, focus rings, and accent micro-states all use the
+   same warm signature instead of the default purple. */
+:root, .dark-mode {
+  --color-brand-50:  #fff4ec;
+  --color-brand-100: #ffe1cc;
+  --color-brand-200: #ffc6a0;
+  --color-brand-300: #ffa473;
+  --color-brand-400: #ff8746;
+  --color-brand-500: #ff6a2b;  /* primary accent */
+  --color-brand-600: #ed5618;
+  --color-brand-700: #c4430f;
+  --color-brand-800: #8a2f0a;
+  --color-brand-900: #5a1f06;
+  --color-brand-950: #321105;
+}
+
+/* Default the entire app to dark editorial — even if next-themes hasn't decided
+   yet (avoids the white flash on first paint). Light mode is opt-in via the
+   Theme provider toggle if/when added. */
+html:not(.light-mode) { color-scheme: dark; }
+html:not(.light-mode) body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* ── Reel-tool-specific polish ──────────────────────────────────────────── */
+/* Range slider thumb tinted with the brand accent. */
+input[type="range"]::-webkit-slider-thumb {
+  background: var(--color-brand-500);
+}
+input[type="range"]::-moz-range-thumb {
+  background: var(--color-brand-500);
+}
+
+/* Color picker chrome — small native pickers look ragged at default size. */
+input[type="color"] {
+  padding: 2px;
+  background: var(--color-bg-secondary);
+}
+
+/* Make the WebKit scrollbars in the internal-scroll columns subtle but visible. */
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.16); }
+
+/* Selection — warm, not the default OS blue. */
+::selection {
+  background: rgba(255, 106, 43, 0.32);
+  color: var(--color-text-primary);
+}
+
+/* Tabs hairline — a subtle warm divider so tab bar reads as editorial. */
+[role="tablist"] { border-color: var(--color-border-secondary) !important; }
