@@ -1,4 +1,21 @@
-# Instagram Reel Tool
+<div align="center">
+  <img src=".github/assets/spoooler-icon.png" alt="Spoooler" width="96" />
+
+  <h1>
+    <img src=".github/assets/spoooler-wordmark.png" alt="Spoooler — AI powered video clipping" width="360" />
+  </h1>
+
+  <p><strong>Local-first Instagram reel production, driven entirely over MCP.</strong></p>
+
+  <p>
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-a78bfa?style=flat-square">
+    <img alt="Node" src="https://img.shields.io/badge/node-20%20%7C%2022-a78bfa?style=flat-square">
+    <img alt="MCP" src="https://img.shields.io/badge/interface-MCP--only-a78bfa?style=flat-square">
+    <img alt="Platform" src="https://img.shields.io/badge/platform-macOS-a78bfa?style=flat-square">
+  </p>
+</div>
+
+---
 
 > **MCP is the sole entry point.** All invocations go through the MCP server
 > (`node mcp/server.mjs`, or `node mcp/client.mjs <tool> '<json>'` from a
@@ -8,12 +25,11 @@
 > a reel) and [FOOTAGE-MCP-SKILL.md](FOOTAGE-MCP-SKILL.md) / [mcp/README.md](mcp/README.md)
 > (the tool catalog).
 
-A local-first Instagram reel production tool.
+Spoooler turns raw footage, an Instagram URL, or a one-line topic into a finished, post-ready 1080×1920 reel — orchestrated tool-by-tool by whatever AI coding assistant you drive it with over MCP.
 
 It can:
 
-- turn an Instagram reel URL, local video, transcript, or topic into a finished 1080x1920 reel
-- expose that workflow over MCP so Claude Code, Codex, and other MCP hosts can drive it tool-by-tool
+- expose that workflow over MCP so Codex and other MCP hosts can drive it tool-by-tool
 - scrape real product media
 - collect stock backgrounds
 - generate voiceover with Kokoro or your own cloned `pocket-tts`/TADA voices
@@ -201,9 +217,9 @@ node mcp/test-strategy.mjs
 
 These confirm the server starts, tools register, and the strategy fast path works without an LLM script-generation step.
 
-### Claude Code configuration
+### MCP host configuration
 
-Add to `~/.claude/settings.json` (or your project's `.claude/settings.json`):
+Most MCP hosts use a JSON `mcpServers` config, e.g. for a generic host settings file:
 
 ```json
 {
@@ -226,7 +242,7 @@ command = "node"
 args = ["/ABSOLUTE/PATH/TO/instagram-reel-tool/mcp/server.mjs"]
 ```
 
-See [mcp/README.md](mcp/README.md) for the full tool catalog and a Kiro config example.
+See [mcp/README.md](mcp/README.md) for the full tool catalog and more host examples.
 
 ## Full render check
 
@@ -282,3 +298,7 @@ Check `PEXELS_API_KEY`/`UNSPLASH_ACCESS_KEY` are set and stock/scraped media act
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+<div align="center">
+  <sub>Built locally, rendered with Remotion.</sub>
+</div>

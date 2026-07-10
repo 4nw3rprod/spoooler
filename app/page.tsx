@@ -54,7 +54,6 @@ const bf = (domain: string) =>
   `https://cdn.brandfetch.io/domain/${domain}/w/400/h/400/theme/light/fallback/lettermark/type/icon?c=${BRANDFETCH_ID}`;
 
 const AGENTS: LogoItem[] = [
-  { src: bf('claude.ai'), fallback: '/logos/claude.svg', title: 'Claude Code' },
   { src: bf('openai.com'), fallback: '/logos/openai.svg', title: 'Codex' },
   { src: bf('cursor.com'), fallback: '/logos/cursor.svg', title: 'Cursor' },
   { src: bf('github.com'), fallback: '/logos/githubcopilot.svg', title: 'Copilot' },
@@ -67,7 +66,7 @@ const AGENTS: LogoItem[] = [
 
 const SPECS: { label: string; value: string }[] = [
   { label: 'Inputs', value: 'Instagram URL, local video, transcript, or a one-line topic' },
-  { label: 'Control', value: 'Driven over MCP by Claude Code, Codex, or Cursor — one tool at a time' },
+  { label: 'Control', value: 'Driven over MCP by Codex, Cursor, or any MCP host — one tool at a time' },
   { label: 'Media', value: 'Scrapes product footage; fills gaps from Pexels and Unsplash; NVIDIA NIM vision filter' },
   { label: 'Voice', value: 'Built-in Kokoro voices, or clone your own with pocket-tts' },
   { label: 'Captions', value: 'Word-aligned to the rendered audio with whisper.cpp' },
@@ -555,7 +554,7 @@ and a research agent. Use my Anwar voice."*
 
 ## Host-specific notes
 
-- **Claude / Gemini**: full multimodal MCP — \`review_media\` thumbnails render inline,
+- **Multimodal MCP hosts**: full multimodal MCP — \`review_media\` thumbnails render inline,
   so you judge media with real vision. This is the intended path.
 - **Codex**: if your build doesn't display MCP image blocks, you still get each
   item's metadata (kind, orientation, dimensions, source URL) from \`review_media\`'s
@@ -759,24 +758,22 @@ function AmbientReelFrame({
 
 
 const LOGO_OFFSETS = [
-  // 0: Claude (Left side, high near title)
+  // 0: Codex (Left side, high near title)
   { xS: -540, ySOffset: -480, sizeS: 96, blurS: 0, opacityS: 0.95, rotS: -15, xA: -416 },
-  // 1: Codex (Left side, mid-low near subheading, blurred)
+  // 1: Cursor (Left side, mid-low near subheading, blurred)
   { xS: -420, ySOffset: -380, sizeS: 72, blurS: 1.5, opacityS: 0.65, rotS: 12, xA: -312 },
-  // 2: Cursor (Left side, low near CTA buttons)
+  // 2: Copilot (Left side, low near CTA buttons)
   { xS: -620, ySOffset: -240, sizeS: 88, blurS: 0, opacityS: 0.9, rotS: -8, xA: -208 },
-  // 3: Copilot (Left side, mid-high near subtitle)
+  // 3: Gemini (Left side, mid-high near subtitle)
   { xS: -480, ySOffset: -280, sizeS: 76, blurS: 2.0, opacityS: 0.5, rotS: 10, xA: -104 },
-  // 4: Gemini (Left side, outer-high near title)
+  // 4: Windsurf (Left side, outer-high near title)
   { xS: -600, ySOffset: -440, sizeS: 90, blurS: 0, opacityS: 0.9, rotS: -5, xA: 0 },
-  // 5: Windsurf (Right side, high near title, blurred)
+  // 5: Zed (Right side, high near title, blurred)
   { xS: 440, ySOffset: -460, sizeS: 72, blurS: 2.0, opacityS: 0.55, rotS: 20, xA: 104 },
-  // 6: Zed (Right side, mid-low near subtitle)
+  // 6: Cline (Right side, mid-low near subtitle)
   { xS: 580, ySOffset: -360, sizeS: 88, blurS: 0, opacityS: 0.9, rotS: -12, xA: 208 },
-  // 7: Cline (Right side, low near CTA buttons, blurred)
-  { xS: 480, ySOffset: -260, sizeS: 80, blurS: 1.0, opacityS: 0.7, rotS: 8, xA: 312 },
-  // 8: Replit (Right side, outer-high near title)
-  { xS: 620, ySOffset: -420, sizeS: 104, blurS: 0, opacityS: 0.95, rotS: 15, xA: 416 }
+  // 7: Replit (Right side, low near CTA buttons, blurred)
+  { xS: 480, ySOffset: -260, sizeS: 80, blurS: 1.0, opacityS: 0.7, rotS: 8, xA: 312 }
 ];
 
 // Motion ScrollLogo component for 120fps dynamic translation
@@ -885,7 +882,7 @@ export default function LandingPage() {
     spacerY: number;
   } | null>(null);
 
-  const [activeMcpTab, setActiveMcpTab] = useState<'claude' | 'cursor' | 'windsurf'>('cursor');
+  const [activeMcpTab, setActiveMcpTab] = useState<'cursor' | 'windsurf'>('cursor');
   const [activeTool, setActiveTool] = useState<number | null>(0);
   const [copiedMcp, setCopiedMcp] = useState(false);
   const [copiedSkill, setCopiedSkill] = useState(false);
@@ -1122,7 +1119,7 @@ export default function LandingPage() {
 
             {/* Control — hub & spoke */}
             <BentoCard icon={<Terminal width={18} height={18} style={{ color: INK }} />} eyebrowText="Control" title="Driven by your agent"
-              bodyText="Claude Code, Codex, Cursor — over MCP, one tool at a time.">
+              bodyText="Codex, Cursor, or any MCP host — over MCP, one tool at a time.">
               <div style={{ background: FOG, borderRadius: 16, padding: '18px 14px 14px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 4px' }}>
                   {AGENTS.slice(0, 4).map((a, idx) => (
@@ -1432,7 +1429,7 @@ export default function LandingPage() {
 
                 {/* Tabs */}
                 <div style={{ display: 'flex', gap: 8, background: 'rgba(0,0,0,0.2)', padding: 4, borderRadius: 10, border: `1px solid ${DARK_BORDER}`, marginBottom: 16 }}>
-                  {(['cursor', 'claude', 'windsurf'] as const).map((tab) => {
+                  {(['cursor', 'windsurf'] as const).map((tab) => {
                     const active = activeMcpTab === tab;
                     return (
                       <button
@@ -1452,7 +1449,7 @@ export default function LandingPage() {
                           textTransform: 'capitalize'
                         }}
                       >
-                        {tab === 'claude' ? 'Claude Code' : tab}
+                        {tab}
                       </button>
                     );
                   })}
@@ -1472,18 +1469,6 @@ export default function LandingPage() {
                       </ul>
                     </div>
                   )}
-                  {activeMcpTab === 'claude' && (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                      <span style={{ ...bodySm, fontWeight: 600, color: DARK_TEXT }}>Claude CLI Setup:</span>
-                      <p style={{ margin: 0, ...bodySm, color: DARK_MUTED }}>
-                        Run this command in your terminal to register the server:
-                      </p>
-                      <code style={{ display: 'block', background: '#1c1c1f', border: `1px solid ${DARK_BORDER}`, padding: '6px 10px', borderRadius: 6, fontSize: 11, fontFamily: MONO, color: DARK_TEXT, overflowX: 'auto', whiteSpace: 'nowrap' }}>
-                        claude mcp add instagram-reel-tool node &quot;/absolute/path/to/instagram-reel-tool/mcp/server.mjs&quot;
-                      </code>
-                      <span style={{ ...caption, color: DARK_MUTED }}>Or append to the configuration file path shown below.</span>
-                    </div>
-                  )}
                   {activeMcpTab === 'windsurf' && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                       <span style={{ ...bodySm, fontWeight: 600, color: DARK_TEXT }}>Windsurf Configuration:</span>
@@ -1498,7 +1483,6 @@ export default function LandingPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(0,0,0,0.15)', border: `1px solid ${DARK_BORDER}`, borderRadius: 8, padding: '8px 12px', marginBottom: 12 }}>
                   <span style={{ fontSize: 11, fontFamily: MONO, color: DARK_MUTED }}>
                     {activeMcpTab === 'cursor' && 'Config Location: Cursor settings UI (MCP tab) or settings.json'}
-                    {activeMcpTab === 'claude' && 'Config Location: ~/.claude/settings.json'}
                     {activeMcpTab === 'windsurf' && 'Config Location: ~/.codeium/windsurf/mcp_config.json'}
                   </span>
                 </div>

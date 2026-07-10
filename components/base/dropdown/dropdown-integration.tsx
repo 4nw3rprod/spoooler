@@ -6,7 +6,6 @@ import { Dropdown } from "@/components/base/dropdown/dropdown";
 import {
     BoltIcon,
     ChatGPTIcon,
-    ClaudeIcon,
     CursorIcon,
     FigmaIcon,
     GeminiIcon,
@@ -39,7 +38,6 @@ export const DropdownIntegration = () => {
 
                     <Dropdown.Section>
                         <Dropdown.Item icon={() => <V0Icon grayscale className="mr-2 size-4 shrink-0" />}>Open in v0</Dropdown.Item>
-                        <Dropdown.Item icon={() => <ClaudeIcon grayscale className="mr-2 size-4 shrink-0" />}>Open in Claude</Dropdown.Item>
                         <Dropdown.Item icon={() => <BoltIcon grayscale className="mr-2 size-4 shrink-0" />}>Open in Bolt</Dropdown.Item>
                         <Dropdown.Item icon={() => <LovableIcon grayscale className="mr-2 size-4 shrink-0" />}>Open in Lovable</Dropdown.Item>
                         <Dropdown.Item icon={() => <CursorIcon grayscale className="mr-2 size-4 shrink-0" />}>Open in Cursor</Dropdown.Item>

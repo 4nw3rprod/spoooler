@@ -1,6 +1,6 @@
 # Instagram Reel Tool — MCP Server
 
-Drive the reel pipeline directly from Claude Code, Codex, or any MCP host. The
+Drive the reel pipeline directly from Codex or any MCP host. The
 host AI authors the creative strategy (hook, voiceover, scenes, layouts) — no
 Groq / Cerebras LLM call. Local tools (Pexels, Scrapling, Kokoro TTS,
 whisper.cpp, Remotion) handle the rest.
@@ -93,9 +93,10 @@ sounds closer to the original sample but renders slower.
 `set_strategy` will auto-collect media (stock + scraped) unless you pass
 `mediaCollection: "skip"`. Most flows can skip steps 5-7.
 
-## Install for Claude Code
+## Install for a generic MCP host
 
-Add to `~/.claude/settings.json` (or your project's `.claude/settings.json`):
+Most MCP hosts use a JSON `mcpServers` config. Add an entry like this to your
+host's settings file:
 
 ```json
 {
@@ -110,7 +111,7 @@ Add to `~/.claude/settings.json` (or your project's `.claude/settings.json`):
 }
 ```
 
-Restart Claude Code. The tools appear under the `instagram-reel-tool` namespace.
+Restart the host. The tools appear under the `instagram-reel-tool` namespace.
 
 ## Install for Codex CLI
 

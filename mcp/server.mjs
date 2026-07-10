@@ -2,7 +2,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Instagram Reel Tool · MCP Server (stdio transport)
 //
-// Lets Claude Code / Codex (or any MCP host) drive this reel pipeline as a set
+// Lets Codex (or any MCP host) drive this reel pipeline as a set
 // of structured tools. The host AI provides the creative strategy directly —
 // no Groq/Cerebras LLM calls. Scrapling and stock-media tools are still local
 // because they hit live APIs.
@@ -764,7 +764,7 @@ server.registerTool(
 
 // ── 5d. review_media — let the CLIENT AI see the scraped media ────────────────
 // Returns each scraped item as a small base64 thumbnail (images downscaled;
-// videos → a mid-point frame) so Codex/Claude/Gemini can judge them with their
+// videos → a mid-point frame) so the calling MCP host can judge them with its
 // OWN vision instead of delegating to an external vision API. Pair with
 // rank_media to commit the AI's judgment.
 server.registerTool(

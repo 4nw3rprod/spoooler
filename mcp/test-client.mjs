@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Tiny MCP client to smoke-test our stdio server. Spawns server.mjs, sends
 // initialize → tools/list → tools/call list_layouts, prints results, exits.
-// Lets us verify the server end-to-end without needing Claude Code installed.
+// Lets us verify the server end-to-end without needing an MCP host installed.
 import {spawn} from 'node:child_process';
 import {dirname, join} from 'node:path';
 import {fileURLToPath} from 'node:url';

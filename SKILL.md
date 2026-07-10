@@ -281,7 +281,7 @@ and a research agent. Use my Anwar voice."*
 
 ## Host-specific notes
 
-- **Claude / Gemini**: full multimodal MCP — `review_media` thumbnails render inline,
+- **Multimodal MCP hosts**: full multimodal MCP — `review_media` thumbnails render inline,
   so you judge media with real vision. This is the intended path.
 - **Codex**: if your build doesn't display MCP image blocks, you still get each
   item's metadata (kind, orientation, dimensions, source URL) from `review_media`'s

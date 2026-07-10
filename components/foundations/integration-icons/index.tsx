@@ -2,7 +2,6 @@
 
 export { default as BoltIcon } from "./bolt-icon";
 export { default as ChatGPTIcon } from "./chatgpt-icon";
-export { default as ClaudeIcon } from "./claude-icon";
 export { default as CursorIcon } from "./cursor-icon";
 export { default as FigmaIcon } from "./figma-icon";
 export { default as GeminiIcon } from "./gemini-icon";
