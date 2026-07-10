@@ -1,11 +1,13 @@
 <div align="center">
-  <img src=".github/assets/spoooler-icon.png" alt="Spoooler" width="96" />
-
-  <h1>
-    <img src=".github/assets/spoooler-wordmark.png" alt="Spoooler — AI powered video clipping" width="360" />
-  </h1>
+  <img src=".github/assets/spoooler-hero.png" alt="Spoooler — AI powered video clipping" width="720" />
 
   <p><strong>Local-first Instagram reel production, driven entirely over MCP.</strong></p>
+
+  <p>
+    <a href="https://instagram-reel-tool.vercel.app/">Website</a> ·
+    <a href="https://github.com/4nw3rprod/spoooler/releases">Download</a> ·
+    <a href="https://github.com/4nw3rprod/ReelRecon">ReelRecon (companion tool)</a>
+  </p>
 
   <p>
     <img alt="License" src="https://img.shields.io/badge/license-MIT-a78bfa?style=flat-square">
