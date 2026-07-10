@@ -115,17 +115,23 @@ Copy `.env.example` to `.env`. Key variables:
 
 None of these are required just to install and run the offline smoke test above.
 
-## Optional: Instagram URL / video transcription
+## Optional: Instagram URL / video transcription — pairs with ReelRecon
 
 Transcribing an Instagram reel URL or an uploaded video file requires a separate MCP-compatible transcriber that this repo does not include. It must expose a `run_mcp_server.sh` script and a `transcribe_input` tool (input URL/path → transcript text).
 
-Point `IG_TRANSCRIBER_ROOT` at it in `.env`:
+**[ReelRecon](https://github.com/4nw3rprod/ReelRecon)** — a companion tool, also by this author — is a drop-in fit: it transcribes Instagram profiles, direct video URLs, or uploaded audio/video with Whisper, and ships its own `run_mcp_server.sh` + `transcribe_input` MCP tool with exactly this interface. Typical pairing:
 
-```dotenv
-IG_TRANSCRIBER_ROOT=/absolute/path/to/your/transcriber
+```bash
+git clone https://github.com/4nw3rprod/ReelRecon.git
 ```
 
-Without it, everything still works via `--transcript` or a plain `--topic` — you just skip the "give me a URL" step and provide the script input directly.
+```dotenv
+IG_TRANSCRIBER_ROOT=/absolute/path/to/ReelRecon
+```
+
+Feed a raw Instagram reel into ReelRecon for a clean transcript, then hand that transcript to Spoooler (via `transcribe_source` / `--transcript`) to script, voice, caption, and render the derivative reel — two focused tools instead of one that tries to do both.
+
+Without it, Spoooler still works fully via `--transcript` or a plain `--topic` — you just skip the "give me a URL" step and provide the script input directly.
 
 ## Optional: cloned-voice narration
 
@@ -294,6 +300,28 @@ Check `PEXELS_API_KEY`/`UNSPLASH_ACCESS_KEY` are set and stock/scraped media act
 - [mcp/README.md](mcp/README.md)
 - [SKILL.md](SKILL.md)
 - [instagram-reel-generator.mjs](instagram-reel-generator.mjs)
+
+## Related project
+
+- **[ReelRecon](https://github.com/4nw3rprod/ReelRecon)** — Instagram/video transcription over MCP or web UI. See [Optional: Instagram URL / video transcription](#optional-instagram-url--video-transcription--pairs-with-reelrecon) above for how the two fit together.
+
+## Built with
+
+Spoooler is a thin orchestration layer over a handful of open-source projects doing the real work:
+
+| Project | Role |
+|---|---|
+| [Remotion](https://www.remotion.dev/) | React-based video composition and MP4 rendering |
+| [Model Context Protocol SDK](https://github.com/modelcontextprotocol/typescript-sdk) | the MCP server/client this tool is entirely driven through |
+| [whisper.cpp](https://github.com/ggml-org/whisper.cpp) (via `@remotion/install-whisper-cpp`) | word-level caption alignment |
+| [Scrapling](https://github.com/D4Vinci/Scrapling) + [Playwright](https://playwright.dev/) | product/brand media discovery and scraping |
+| [Kokoro](https://github.com/hexgrad/kokoro) | default text-to-speech voices |
+| [Kyutai's Pocket-TTS](https://github.com/kyutai-labs) | optional bring-your-own cloned-voice narration |
+| [Hume's TADA (MLX)](https://github.com/HumeAI) | optional alternate bring-your-own voice-cloning engine, Apple Silicon |
+| [Next.js](https://nextjs.org/) | the landing page / marketing surface |
+| [Zod](https://zod.dev/) | MCP tool input schema validation |
+
+Full dependency list in [package.json](package.json).
 
 ## License
 
